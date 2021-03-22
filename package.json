@@ -6,13 +6,17 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "global": "^4.4.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"npx json-server --watch db.json --port 3800\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -21,6 +25,12 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "plugins": [
+      "react",
+      "jsx-a11y",
+      "import",
+      "react-hooks"
     ]
   },
   "browserslist": {
@@ -34,5 +44,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "2.x",
+    "json-server": "^0.16.3"
   }
 }
