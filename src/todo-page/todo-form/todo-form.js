@@ -21,10 +21,11 @@ const TodoForm = ({ onSubmit = () => null }) => {
               onChange={onChangeTodoInput}
               name="todo"
               type="text"
-              placeholder="Add new todo"
+              placeholder="New Todo"
+              aria-label="new-todo"
             />
           </Col>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" aria-label="add-button" type="submit">
             +
           </Button>
         </Row>
