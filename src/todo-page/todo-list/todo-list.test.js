@@ -1,103 +1,94 @@
-import { render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TodoList from './todo-list';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 
 const mockData = [
   {
-    name: 'Main bola',
+    name: 'Learn typscript',
   },
   {
-    name: 'Main basket',
+    name: 'Learn recoil.js',
   },
   {
-    name: 'Main kelereng',
+    name: 'Learn rx.js',
   },
 ];
 
-const server = setupServer(
-  rest.get('http://localhost:3800/todos', (req, res, ctx) => {
-    return res(ctx.json(mockData));
-  })
-);
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
-
 describe('Todo List', () => {
   describe('Loading Indicator', () => {
-    test('Should render loading indicator', async () => {
-      render(<TodoList />);
+    test('Should render loading indicator', () => {
+      render(<TodoList isFetching={true} />);
 
       const loadingIndicator = screen.getByRole('loading-indicator');
       expect(loadingIndicator).toBeInTheDocument();
     });
 
-    test('Should remove loading indicator', async () => {
-      render(<TodoList />);
+    test('Should remove loading indicator', () => {
+      render(<TodoList isFetching={false} />);
 
       const loadingIndicator = screen.queryByRole('loading-indicator');
 
-      await waitFor(() => {
-        expect(loadingIndicator).not.toBeInTheDocument();
-      });
+      expect(loadingIndicator).not.toBeInTheDocument();
     });
   });
 
   describe('TodoList', () => {
     test('Should not render initial todo list', async () => {
       render(<TodoList />);
-
       const listGroup = screen.queryByRole('listgroup');
       expect(listGroup).not.toBeInTheDocument();
     });
 
-    test('Should render initial todo list', async () => {
-      render(<TodoList />);
-
-      await waitFor(() => {
-        const listGroup = screen.getByRole('listgroup');
-        const todoList = screen
-          .getAllByRole('listitem')
-          .map((li) => li.textContent);
-        const mockDataName = mockData.map((mock) => mock.name);
-
-        expect(listGroup).toBeInTheDocument();
-        expect(todoList).toHaveLength(mockData.length);
-        expect(todoList).toEqual(mockDataName);
-      });
+    test('Should render todo list', async () => {
+      render(<TodoList list={mockData} />);
+      const listGroup = screen.getByRole('listgroup');
+      const todoList = screen
+        .getAllByRole('listitem')
+        .map((li) => li.textContent);
+      const mockDataName = mockData.map((mock) => mock.name);
+      expect(listGroup).toBeInTheDocument();
+      expect(todoList).toHaveLength(mockData.length);
+      expect(todoList).toEqual(mockDataName);
     });
 
-    test('Should render todolist with new todo from props', async () => {
-      const { rerender } = render(<TodoList />);
+    test('Should render todolist with updated list', async () => {
+      const { rerender } = render(<TodoList list={mockData} />);
       const newTodo = { name: 'Main ketapel' };
+      const newMockData = [...mockData, newTodo];
 
-      await waitFor(() => screen.findAllByRole('listitem'));
-
-      rerender(<TodoList newTodo={newTodo} />);
-
-      const updatedTodoList = await screen.findAllByRole('listitem');
+      rerender(<TodoList list={newMockData} />);
+      const updatedTodoList = screen.getAllByRole('listitem');
       const updatedTodoListName = updatedTodoList.map(
         (todo) => todo.textContent
       );
-
       expect(updatedTodoListName).toContain(newTodo.name);
     });
 
-    test('Can delete todo item from list', async () => {
+    test('Should delete todo item from list', async () => {
       const todoToDelete = mockData[0];
-      render(<TodoList />);
+      let newMockData = [...mockData];
 
-      const deleteButton = await screen.findByRole('button', {
+      const onClickDeleteBtn = jest.fn((name) => {
+        newMockData = mockData.filter((todo) => todo.name !== name);
+      });
+
+      const { rerender } = render(
+        <TodoList list={newMockData} onClickDeleteBtn={onClickDeleteBtn} />
+      );
+
+      const deleteButton = screen.getByRole('button', {
         name: `delete-todo-${todoToDelete.name}`,
       });
 
       fireEvent.click(deleteButton);
 
+      rerender(<TodoList list={newMockData} />);
+
       const todoToDeleteNode = screen.queryByRole('listitem', {
         name: todoToDelete.name,
       });
 
+      expect(onClickDeleteBtn).toHaveBeenCalledTimes(1);
+      expect(onClickDeleteBtn).toHaveBeenCalledWith(todoToDelete.name);
       expect(todoToDeleteNode).not.toBeInTheDocument();
     });
   });

@@ -1,18 +1,19 @@
 import { ListGroup, Spinner } from 'react-bootstrap';
-import useTodoList from './use-todo-list';
 
-const TodoList = ({ newTodo }) => {
-  const { todoList, isFetchingTodoList, deleteTodo } = useTodoList(newTodo);
-
-  if (isFetchingTodoList || !todoList.length) {
+const TodoList = ({ isFetching, list = [], onClickDeleteBtn = () => null }) => {
+  if (isFetching) {
     return (
       <Spinner role="loading-indicator" animation="border" variant="primary" />
     );
   }
 
+  if (!list.length) {
+    return <div>Maaf, tidak ada todo list</div>;
+  }
+
   return (
     <ListGroup className="text-dark text-left" role="listgroup">
-      {todoList.map((todo, index) => (
+      {list.map((todo, index) => (
         <ListGroup.Item key={index}>
           <p role="listitem" aria-label={todo.name}>
             {todo.name}
@@ -21,7 +22,7 @@ const TodoList = ({ newTodo }) => {
             type="button"
             aria-label={`delete-todo-${todo.name}`}
             className="close text-danger"
-            onClick={() => deleteTodo(todo.name)}
+            onClick={() => onClickDeleteBtn(todo.name)}
             style={{ fontSize: '2rem' }}
           >
             &times;
