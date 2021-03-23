@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, waitFor, screen, fireEvent } from '@testing-library/react';
 import TodoList from './todo-list';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -84,8 +84,21 @@ describe('Todo List', () => {
       expect(updatedTodoListName).toContain(newTodo.name);
     });
 
-    test('Can delete todo item from list', () => {
-      // render(<TodoList />);
+    test('Can delete todo item from list', async () => {
+      const todoToDelete = mockData[0];
+      render(<TodoList />);
+
+      const deleteButton = await screen.findByRole('button', {
+        name: `delete-todo-${todoToDelete.name}`,
+      });
+
+      fireEvent.click(deleteButton);
+
+      const todoToDeleteNode = screen.queryByRole('listitem', {
+        name: todoToDelete.name,
+      });
+
+      expect(todoToDeleteNode).not.toBeInTheDocument();
     });
   });
 });

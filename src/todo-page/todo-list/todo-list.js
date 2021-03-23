@@ -14,10 +14,12 @@ const TodoList = ({ newTodo }) => {
     <ListGroup className="text-dark text-left" role="listgroup">
       {todoList.map((todo, index) => (
         <ListGroup.Item key={index}>
-          <p role="listitem">{todo.name}</p>
+          <p role="listitem" aria-label={todo.name}>
+            {todo.name}
+          </p>
           <button
             type="button"
-            aria-label={`delete-todo-${index}`}
+            aria-label={`delete-todo-${todo.name}`}
             className="close text-danger"
             onClick={() => deleteTodo(todo.name)}
             style={{ fontSize: '2rem' }}
