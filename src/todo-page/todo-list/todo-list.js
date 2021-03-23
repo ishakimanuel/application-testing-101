@@ -4,25 +4,20 @@ import useTodoList from './use-todo-list';
 const TodoList = ({ newTodo }) => {
   const { todoList, isFetchingTodoList, deleteTodo } = useTodoList(newTodo);
 
-  if (isFetchingTodoList) {
-    return <Spinner animation="border" variant="primary" />;
-  }
-
-  if (!todoList) {
+  if (isFetchingTodoList || !todoList.length) {
     return (
-      <ListGroup className="text-dark text-left">
-        <ListGroup.Item>Todo List tidak ada</ListGroup.Item>
-      </ListGroup>
+      <Spinner role="loading-indicator" animation="border" variant="primary" />
     );
   }
 
   return (
-    <ListGroup className="text-dark text-left">
+    <ListGroup className="text-dark text-left" role="listgroup">
       {todoList.map((todo, index) => (
         <ListGroup.Item key={index}>
-          {todo.name}{' '}
+          <p role="listitem">{todo.name}</p>
           <button
             type="button"
+            aria-label={`delete-todo-${index}`}
             className="close text-danger"
             onClick={() => deleteTodo(todo.name)}
             style={{ fontSize: '2rem' }}

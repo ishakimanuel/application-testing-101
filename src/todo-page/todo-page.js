@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TodoForm from './todo-form';
-import TodoList from './todo-list';
+import TodoList from './todo-list/todo-list';
 
 const TodoPage = () => {
   const [newTodo, setNewTodo] = useState(null);

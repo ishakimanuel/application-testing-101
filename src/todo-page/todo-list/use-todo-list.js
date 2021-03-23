@@ -4,23 +4,24 @@ import axios from 'axios';
 const host = 'http://localhost:3800';
 
 const useTodoList = (newTodo) => {
-  const [todoList, setTodoList] = useState(null);
+  const [todoList, setTodoList] = useState([]);
   const [isFetchingTodoList, setIsFetchingTodoList] = useState(false);
 
   useEffect(() => {
-    initTodoList();
+    const req = initTodoList();
+
+    return () => req;
   }, []);
 
   useEffect(() => {
     newTodo && addNewTodo(newTodo);
   }, [newTodo]);
 
-  const initTodoList = () => {
+  const initTodoList = async () => {
     setIsFetchingTodoList(true);
-    axios.get(host + '/todos').then((res) => {
-      setTodoList(res.data);
-      setIsFetchingTodoList(false);
-    });
+    const data = await axios.get(host + '/todos');
+    setTodoList(data.data);
+    setIsFetchingTodoList(false);
   };
 
   const addNewTodo = (newTodo) => {
