@@ -52,7 +52,7 @@ Reduce uneeded code because we are focusing on solving test case rather than bug
       
 ### What should we test ?
 - **Test Render / Result**
-Test what you expect the component to render or function to return.
+Test what you expect from the component or function to render or return.
 If you are rendering a custom `Button` component and you pass a `color` prop with a value of `red` you should test that. This will also give you confidence that your component meet the design requirements.
 
 - **Test actions**
