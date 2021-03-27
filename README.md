@@ -15,30 +15,28 @@ A process to ensure that our application functionality is running as our expecte
 ### **Potential drawbacks**
 
 - Writing tests is time consuming and difficult.
-- In certain scenarios executing tests in CI can cost actual money.
 - If done incorrectly, it can give you false positives. Your tests pass, but your app doesn’t function as intended.
 - Or false negatives. Your tests fail but your app is functioning as intended.
 
 ### Levels **of testing**
-##### **Unit test (single unit testing)**
+#### **Unit test (single unit testing)**
 Ensures that each part of the code delivers the expected result
 - **Function**
     Logic testing of our single function (give output then expect the result)
 - **Snapshoot**
     A snapshot test makes sure that the user interface (UI) of a web application does not change unexpectedly. It captures the code of a component at a moment in time, so that we can compare the component in one state with any other possible state it might take. Rules for snashot is using for UI that not often changes and not complex
-
 - **Component**
     Expect component to render / doing something base on our expectation 
 
-##### **Integration Test (Behavior testing)**
+#### **Integration Test (Behavior testing)**
  Integration testing is performed to test individual components to check how they function together. In other words, it is performed to test the modules which are working fine individually and do not show bugs when integrated.
 
-##### **End To End Test (All flow testing)**
+#### **End To End Test (All flow testing)**
 Testing method that involves testing an application’s workflow from beginning to end. 
 
 ### **Implementation**
 
-##### **TDD**
+#### **TDD**
 Create testing first then do code until the testing is passed
 
 - **Leads to better application design**
