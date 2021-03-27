@@ -47,7 +47,7 @@ Create testing first then do code until the testing is passed
 - **Code simplify and time saving** **(less code)**
 Reduce uneeded code because we are focusing on solving test case not the code bug and it's saving time because no need to manual testing, and write test case after we tired of coding.  
 
-    | TDD | NO TDD |
+    | NO TDD | TDD |
     | ------ | ------ |
     | Code ⇒ manual test ⇒ error ⇒ code ⇒ manual test ⇒ error ⇒ done ⇒ unit test | Test Case ⇒ error ⇒ code ⇒ error ⇒ code ⇒ done  |
    
