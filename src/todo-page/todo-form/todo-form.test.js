@@ -44,6 +44,7 @@ describe('Todo Form', () => {
     test('Render Add Button with type submit', () => {
       expect(addTodoButton).toHaveAttribute('type', 'submit');
     });
+
     test('Click button should call onSubmit function props', () => {
       const { addTodoButton, rerender } = renderTodoForm();
       const onSubmit = jest.fn((e) => e.preventDefault());

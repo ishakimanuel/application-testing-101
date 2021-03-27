@@ -56,11 +56,12 @@ describe('Todo List', () => {
       const newMockData = [...mockData, newTodo];
 
       rerender(<TodoList list={newMockData} />);
-      const updatedTodoList = screen.getAllByRole('listitem');
-      const updatedTodoListName = updatedTodoList.map(
-        (todo) => todo.textContent
-      );
-      expect(updatedTodoListName).toContain(newTodo.name);
+      const updatedTodoList = screen.getByRole('listgroup');
+      const newTodoElement = screen.getByRole('listitem', {
+        name: newTodo.name,
+      });
+
+      expect(updatedTodoList).toContainElement(newTodoElement);
     });
 
     test('Should delete todo item from list', async () => {
