@@ -44,7 +44,7 @@ Create testing first then do code until the testing is passed
 - **Leads to better application design**
  By writting test case first, we already know what to do and have reason about our code
 
-- **Code simplify and time saving ** **(less code)**
+- **Code simplify and time saving** **(less code)**
 Reduce uneeded code because we are focusing on solving test case not the code bug and it's saving time because no need to manual testing, and write test case after we tired of coding.  
 
     | TDD | NO TDD |
