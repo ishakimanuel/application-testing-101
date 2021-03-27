@@ -36,8 +36,8 @@ Testing method that involves testing an application’s workflow from beginning 
 
 ### **Implementation**
 
-#### **TDD**
-Create testing first then do code until the testing is passed
+#### **TDD (Test Driven Development)**
+TDD is software development approuch where unit test and testing is define first before the actual code implementation, and as we start code, we are focusing to solve the test case until our test is passed
 
 - **Leads to better application design**
  By writting test case first, we already know what code should we write and have a good reason about our code.
