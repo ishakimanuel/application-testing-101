@@ -40,10 +40,10 @@ Testing method that involves testing an application’s workflow from beginning 
 Create testing first then do code until the testing is passed
 
 - **Leads to better application design**
- By writting test case first, we already know what to do and have reason about our code
+ By writting test case first, we already know what code should we write and have a good reason about our code.
 
 - **Code simplify and time saving** **(less code)**
-Reduce uneeded code because we are focusing on solving test case not the code bug and it's saving time because no need to manual testing, and write test case after we tired of coding.  
+Reduce uneeded code because we are focusing on solving test case rather than bug's causing from our code and it's saving time because no need to manual testing, and write our test case after coding, because our testing is complete with the code in the same time.  
 
     | NO TDD | TDD |
     | ------ | ------ |
