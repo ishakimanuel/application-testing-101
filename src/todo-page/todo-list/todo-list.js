@@ -1,4 +1,4 @@
-import { ListGroup, Spinner } from 'react-bootstrap';
+import { Col, ListGroup, Row, Spinner } from 'react-bootstrap';
 
 const TodoList = ({ isFetching, list = [], onClickDeleteBtn = () => null }) => {
   if (isFetching) {
@@ -15,18 +15,24 @@ const TodoList = ({ isFetching, list = [], onClickDeleteBtn = () => null }) => {
     <ListGroup className="text-dark text-left" role="listgroup">
       {list.map((todo, index) => (
         <ListGroup.Item key={index}>
-          <p role="listitem" aria-label={todo.name}>
-            {todo.name}
-          </p>
-          <button
-            type="button"
-            aria-label={`delete-todo-${todo.name}`}
-            className="close text-danger"
-            onClick={() => onClickDeleteBtn(todo.name)}
-            style={{ fontSize: '2rem' }}
-          >
-            &times;
-          </button>
+          <Row className="align-items-center">
+            <Col>
+              <p role="listitem" aria-label={todo.name}>
+                {todo.name}
+              </p>
+            </Col>
+            <Col>
+              <button
+                type="button"
+                aria-label={`delete-todo-${todo.name}`}
+                className="close text-danger"
+                onClick={() => onClickDeleteBtn(todo.name)}
+                style={{ fontSize: '2rem' }}
+              >
+                &times;
+              </button>
+            </Col>
+          </Row>
         </ListGroup.Item>
       ))}
     </ListGroup>
