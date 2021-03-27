@@ -52,7 +52,7 @@ describe('Todo List', () => {
 
     test('Should render todolist with updated list', async () => {
       const { rerender } = render(<TodoList list={mockData} />);
-      const newTodo = { name: 'Main ketapel' };
+      const newTodo = { name: 'My new todo' };
       const newMockData = [...mockData, newTodo];
 
       rerender(<TodoList list={newMockData} />);
