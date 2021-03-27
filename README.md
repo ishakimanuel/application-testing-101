@@ -61,6 +61,6 @@ If you are rendering a custom `Button` component and you pass a `color` prop
 For example if you expect something to happen when you click or hover over a button test 
             
 ### **Last Step:** **Best Practices**
-[https://github.com/goldbergyoni/javascript-testing-best-practices](https://github.com/goldbergyoni/javascript-testing-best-practices#section-1-the-test-anatomy-1)
-[https://kentcdodds.com/blog/testing-implementation-details/](https://kentcdodds.com/blog/testing-implementation-details/)
-[https://kentcdodds.com/blog/common-mistakes-with-react-testing-library#not-using-screen](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library#not-using-screen)
+- [https://github.com/goldbergyoni/javascript-testing-best-practices](https://github.com/goldbergyoni/javascript-testing-best-practices#section-1-the-test-anatomy-1)
+- [https://kentcdodds.com/blog/testing-implementation-details/](https://kentcdodds.com/blog/testing-implementation-details/)
+- [https://kentcdodds.com/blog/common-mistakes-with-react-testing-library#not-using-screen](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library#not-using-screen)
