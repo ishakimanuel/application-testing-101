@@ -18,30 +18,33 @@ const renderTodoForm = (props = {}) => {
 };
 
 describe('Todo Form', () => {
-  const { addTodoButton, todoInput } = renderTodoForm();
-
   describe('Todo Input', () => {
-    test('Render todo input with type text', () => {
+    test('Render todo input', () => {
+      const { todoInput } = renderTodoForm();
+
+      expect(todoInput).toBeInTheDocument();
+      expect(todoInput).toHaveValue('');
       expect(todoInput).toHaveAttribute('type', 'text');
     });
 
-    test('Todo input must have no initial value', () => {
-      expect(todoInput).toHaveValue('');
-    });
-
     test('Should Update todo input value', () => {
+      const { todoInput } = renderTodoForm();
       const newTodo = 'My new todo';
+
       fireEvent.change(todoInput, {
         target: {
           value: newTodo,
         },
       });
+
       expect(todoInput).toHaveValue(newTodo);
     });
   });
 
   describe('Add Button', () => {
     test('Should render add button with type submit', () => {
+      const { addTodoButton } = renderTodoForm();
+      expect(addTodoButton).toBeInTheDocument();
       expect(addTodoButton).toHaveAttribute('type', 'submit');
     });
 
