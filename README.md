@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# **101 Application testing**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repo is created to give you a basic understanding why you should implement unit testing in your [React](https://reactjs.org/) application, by giving you some basic concepts and practical example by using [jest](https://jestjs.io/docs/) and [testing-library](https://testing-library.com/).
 
-## Available Scripts
 
-In the project directory, you can run:
+### **What is testing ?**
+A process to ensure that our application functionality is running as our expected. **(bug free)**
 
-### `yarn start`
+### **Why do we testing ?**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Building confidence in our code
+- Code documentations of applications flow
+- Bugs and Regression prevention
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### **Potential drawbacks**
 
-### `yarn test`
+- Writing tests is time consuming and difficult.
+- If done incorrectly, it can give you false positives. Your tests pass, but your app doesn’t function as intended.
+- Or false negatives. Your tests fail but your app is functioning as intended.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Levels **of testing**
+#### **Unit test (single unit testing)**
+Ensures that each part of the code delivers the expected result
+- **Function**
+    Logic testing of our single function (give output then expect the result)
+- **Snapshoot**
+    A snapshot test makes sure that the user interface (UI) of a web application does not change unexpectedly. It captures the code of a component at a moment in time, so that we can compare the component in one state with any other possible state it might take. Rules for snashot is using for UI that not often changes and not complex
+- **Component**
+    Expect component to render / doing something base on our expectation 
 
-### `yarn build`
+#### **Integration Test (Behavior testing)**
+ Integration testing is performed to test individual components to check how they function together. In other words, it is performed to test the modules which are working fine individually and do not show bugs when integrated.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### **End To End Test (All flow testing)**
+Testing method that involves testing an application’s workflow from beginning to end. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Implementation**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### **TDD (Test Driven Development)**
+TDD is software development approuch where unit test and testing is define first before the actual code implementation, and as we start code, we are focusing to solve the test case until our test is passed
 
-### `yarn eject`
+- **Leads to better application design**
+ By writting test case first, we already know what code should we write and have a good reason about our code.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Code simplify and time saving** **(less code)**
+Reduce uneeded code because we are focusing on solving test case rather than bug's causing from our code and it's saving time because no need to manual testing, and write our test case after coding, because our testing is complete with the code in the same time.  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    | NO TDD | TDD |
+    | ------ | ------ |
+    | Code ⇒ manual test ⇒ error ⇒ code ⇒ manual test ⇒ error ⇒ done ⇒ unit test | Test Case ⇒ error ⇒ code ⇒ error ⇒ code ⇒ done  |
+   
+      
+### What should we test ?
+- **Test Render / Result**
+Test what you expect from the component or function to render or return.
+If you are rendering a custom `Button` component and you pass a `color` prop with a value of `red` you should test that. This will also give you confidence that your component meet the design requirements.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Test actions**
+For example if you expect something to happen when you click or hover over a button test 
+            
+### **Last Step:** **Best Practices**
+- [https://github.com/goldbergyoni/javascript-testing-best-practices](https://github.com/goldbergyoni/javascript-testing-best-practices#section-1-the-test-anatomy-1)
+- [https://kentcdodds.com/blog/testing-implementation-details/](https://kentcdodds.com/blog/testing-implementation-details/)
+- [https://kentcdodds.com/blog/common-mistakes-with-react-testing-library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
