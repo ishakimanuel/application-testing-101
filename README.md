@@ -47,7 +47,7 @@ Reduce uneeded code because we are focusing on solving test case rather than bug
 
     | NO TDD | TDD |
     | ------ | ------ |
-    | Code ⇒ manual test ⇒ error ⇒ code ⇒ manual test ⇒ error ⇒ done ⇒ unit test | Test Case ⇒ error ⇒ code ⇒ error ⇒ code ⇒ done  |
+    | Code ⇒ manual test ⇒ error ⇒ fix ⇒ manual test ⇒ fix ⇒ done ⇒ unit test | Test Case ⇒ error ⇒ fix ⇒ error ⇒ fix ⇒ done  |
    
       
 ### What should we test ?
@@ -55,7 +55,7 @@ Reduce uneeded code because we are focusing on solving test case rather than bug
 Test what you expect from the component or function to render or return.
 If you are rendering a custom `Button` component and you pass a `color` prop with a value of `red` you should test that. This will also give you confidence that your component meet the design requirements.
 
-- **Test actions**
+- **Test Interaction**
 For example if you expect something to happen when you click or hover over a button test 
             
 ### **Last Step:** **Best Practices**
