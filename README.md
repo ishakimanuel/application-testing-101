@@ -1,4 +1,4 @@
-# **101 Application testing**
+# **Application Testing 101 Guide & Example (React Base)**
 
 This repo is created to give you a basic understanding why you should implement unit testing in your [React](https://reactjs.org/) application, by giving you some basic concepts and practical example by using [jest](https://jestjs.io/docs/) and [testing-library](https://testing-library.com/).
 
