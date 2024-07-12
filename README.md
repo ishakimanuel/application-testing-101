@@ -10,12 +10,12 @@ A process to ensure that our application functionality is running as our expecte
 
 - Building confidence in our code
 - Code documentations of applications flow
-- Bugs and Regression prevention
+- Bugs and regression prevention
 
 ### **Potential drawbacks**
 
 - Writing tests is time consuming and difficult.
-- If done incorrectly, it can give you false positives. Your tests pass, but your app doesn’t function as intended.
+- If done incorrectly, it can bring false positives. Your tests pass, but your app doesn’t functioning as intended.
 - Or false negatives. Your tests fail but your app is functioning as intended.
 
 ### Levels **of testing**
